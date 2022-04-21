@@ -26,4 +26,13 @@ npm run test:v3
 
 ```bash
 npm run build
+
+# build preview
+npm pack
+
+# preview build for vue2
+cd example/vue2 && npm i -S path/to/npm.pack.tgz && npm run dev
+
+# preview build for vue3
+cd example/vue3 && npm i -S path/to/npm.pack.tgz && npm run dev
 ```
