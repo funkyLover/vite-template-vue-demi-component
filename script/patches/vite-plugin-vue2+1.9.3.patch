@@ -1,0 +1,25 @@
+diff --git a/node_modules/vite-plugin-vue2/dist/main.js b/node_modules/vite-plugin-vue2/dist/main.js
+index a8faa86..c580b63 100644
+--- a/node_modules/vite-plugin-vue2/dist/main.js
++++ b/node_modules/vite-plugin-vue2/dist/main.js
+@@ -190,7 +190,7 @@ function genHmrCode(root, id, functional, templateRequest) {
+     const idJSON = JSON.stringify(id);
+     return `\n/* hot reload */
+ import __VUE_HMR_RUNTIME__ from ${JSON.stringify(index_1.vueHotReload)}
+-import vue from "vue"
++import vue from "vue2"
+ __VUE_HMR_RUNTIME__.install(vue)
+ if(!import.meta.env.SSR && __VUE_HMR_RUNTIME__.compatible){
+   if (!__VUE_HMR_RUNTIME__.isRecorded(${idJSON})) {
+diff --git a/node_modules/vite-plugin-vue2/dist/utils/vueHotReload.js b/node_modules/vite-plugin-vue2/dist/utils/vueHotReload.js
+index 8a18746..5c0b7ce 100644
+--- a/node_modules/vite-plugin-vue2/dist/utils/vueHotReload.js
++++ b/node_modules/vite-plugin-vue2/dist/utils/vueHotReload.js
+@@ -16,7 +16,6 @@ var initHookName = 'beforeCreate'
+ __VUE_HMR_RUNTIME__.install = function (vue, browserify) {
+ 	if (installed) { return }
+ 	installed = true
+-
+ 	Vue = vue.__esModule ? vue.default : vue
+ 	version = Vue.version.split('.').map(Number)
+ 	isBrowserify = browserify

@@ -1,0 +1,60 @@
+{
+  "name": "vc",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:v3 && npm run build:v2",
+    "build:v3": "node ./script/build.js --mode vue3",
+    "build:v2": "node --require ./script/v2hack.js ./script/build.js -mode vue2",
+    "test": "npm run test:v2 && npm run test:v3",
+    "test:v2": "vue-demi-switch 2 vue2 && node --require ./script/v2hack.js ./node_modules/vitest/vitest.mjs --config ./vite.config.test.js --mode vue2",
+    "test:v3": "vue-demi-switch 3 && vitest v3.test.ts --config ./vite.config.test.js --mode vue3",
+    "coverage": "vitest run --coverage",
+    "postinstall": "node ./script/postinstall.js"
+  },
+  "dependencies": {
+    "vue-demi": "latest"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/index.umd.js",
+      "import": "./dist/index.es.js"
+    },
+    "./*": "./dist/*"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "@vitejs/plugin-vue-jsx": "^1.3.10",
+    "@vue/composition-api": "^1.4.9",
+    "@vue/test-utils": "^2.0.0-rc.20",
+    "@vue/test-utils1": "npm:@vue/test-utils@1",
+    "cross-env": "^7.0.3",
+    "fs-extra": "^10.1.0",
+    "happy-dom": "^2.55.0",
+    "jsdom": "^19.0.0",
+    "lodash": "^4.17.21",
+    "patch-package": "^6.4.7",
+    "sass": "^1.50.1",
+    "typescript": "^4.5.4",
+    "unplugin-vue2-script-setup": "^0.10.2",
+    "vite": "^2.8.0",
+    "vite-plugin-vue2": "^1.9.3",
+    "vitest": "^0.9.3",
+    "vue": "^3.2.25",
+    "vue-template-compiler": "^2.6.14",
+    "vue-tsc": "^0.29.8",
+    "vue2": "npm:vue@2"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.6.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
